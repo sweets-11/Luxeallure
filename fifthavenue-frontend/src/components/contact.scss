@@ -1,0 +1,88 @@
+.contact {
+  background-color: #0a3e90;
+  color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+
+  .wrapper {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    span {
+      flex: 1 1 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .mail {
+      flex: 1 1 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+
+      input {
+        padding: 10px;
+        border: none;
+        border-radius: 5px 0 0 5px;
+        width: 70%;
+        max-width: 300px;
+      }
+
+      button {
+        padding: 10px;
+        color: white;
+        background: #333;
+        border-radius: 0 5px 5px 0;
+        border: none;
+      }
+    }
+
+    .icons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex: 1 1 100%;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .contact {
+    .wrapper {
+      flex-direction: row;
+      span,
+      .mail,
+      .icons {
+        flex: unset;
+      }
+      .mail {
+        input {
+          width: auto;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact {
+    .wrapper {
+      span {
+        flex: 1;
+      }
+      .mail {
+        flex: 1;
+        justify-content: flex-start;
+      }
+      .icons {
+        flex: 0;
+      }
+    }
+  }
+}

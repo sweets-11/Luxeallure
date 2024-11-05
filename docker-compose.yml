@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: ./fifthavenuehub-server
+      dockerfile: Dockerfile
+    ports:
+      - '5000:5000'
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/
+      - PORT=5000
+      - STRIPE_KEY=your key
+      - PRODUCT_PER_PAGE=10
+    depends_on:
+      - mongo
+  client:
+    build:
+      context: ./fifthavenuehub-client
+      dockerfile: Dockerfile
+    ports:
+      - '5173:5173'
+    environment:
+      - VITE_STRIPE_KEY=your key
+      - VITE_SERVER=http://localhost:5000
+    depends_on:
+      - server
+  mongo:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
